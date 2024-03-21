@@ -1,9 +1,9 @@
-import { asyncHandler } from "../utilis/asyncHandler";
-import {ApiError}  from "../utils/ApiError.js";
+import { asyncHandler } from "../utilis/asyncHandler.js";
+import {ApiError}  from "../utilis/apiError.js";
 import {User} from "../models/user.model.js"
 
-import {uploadOnCloudinary} from "../utils/cloudinary.js"
-import { ApiResponse } from "../utils/ApiResponse.js";
+import {uploadOnCloudinary} from "../utilis/cloudinary.js"
+import { ApiResponse } from "../utilis/apiResponse.js";
 import jwt from "jsonwebtoken"
 import mongoose from "mongoose";
 
