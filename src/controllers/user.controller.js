@@ -112,6 +112,46 @@ return res.status(201).json(
 
 
 
+const loginUser = asyncHandler(async (req, res) =>{
+
+  //ALGORITHMS
+
+
+
+  // req body se data le aao
+  //username or email
+  //find the user
+  // password check
+  //access and refresh token generate
+  // send cookie
+
+
+  const {email, username, password} = req.body
+  if(!username || !email){
+    throw new ApiError(400, "username or email is required");
+  }
+
+  const user = await User.findOne({
+    $or: [{username}, {email}]
+  })
+
+  if(!user){
+    throw new ApiError(404, "user not found");
+  }
+
+
+  ///check password
+
+  await user.isPasswordCorrect(password);
+
+  if(!isPasswordValid){
+    throw new ApiError(404, "Invalid user password");
+  }
+
+
+
+
+})
 
 
 
@@ -119,5 +159,4 @@ return res.status(201).json(
 
 
 
-
-export {registerUser}
+export {registerUser, loginUser}
